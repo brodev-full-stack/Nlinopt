@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Flat light-mode ground, no gradient -->
+  <rect width="512" height="512" rx="112" fill="#F2EEE2" />
+
+  <!-- Flat isometric cube: three faces = three methods (Modelo, Simplex, Gráfico) -->
+  <g>
+    <!-- Top face -->
+    <polygon points="256,96 400,176 256,256 112,176" fill="#E3E7ED" stroke="#10192A" stroke-width="3" stroke-opacity="0.15" />
+
+    <!-- Left face -->
+    <polygon points="112,176 256,256 256,416 112,336" fill="#33415F" />
+
+    <!-- Right face — the accent, marking the optimal solution -->
+    <polygon points="256,256 400,176 400,336 256,416" fill="#B23A2E" />
+
+    <!-- Vertex lines converging on the center pivot -->
+    <line x1="256" y1="256" x2="256" y2="96" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.55" />
+    <line x1="256" y1="256" x2="112" y2="336" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.35" />
+    <line x1="256" y1="256" x2="400" y2="336" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.35" />
+
+    <!-- Center pivot vertex -->
+    <circle cx="256" cy="256" r="13" fill="#F2EEE2" />
+    <circle cx="256" cy="256" r="7" fill="#10192A" />
+  </g>
+</svg>

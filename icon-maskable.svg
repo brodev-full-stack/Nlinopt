@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="peachGradMask" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9E80" />
+      <stop offset="50%" stop-color="#FF7043" />
+      <stop offset="100%" stop-color="#D84315" />
+    </linearGradient>
+    <pattern id="archGridMask" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#F4DDD2" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Full bleed warm architectural peach background for maskable circle/squircle cutting -->
+  <rect width="512" height="512" fill="#FFE8DE" />
+
+  <!-- Inner safe zone drafting board (well within 80% safe zone) -->
+  <rect x="52" y="52" width="408" height="408" fill="#FFFFFF" stroke="#FFBDAB" stroke-width="3" />
+  <rect x="52" y="52" width="408" height="408" fill="url(#archGridMask)" opacity="0.8" />
+
+  <!-- Scaled content inside safe zone -->
+  <g transform="translate(42, 34) scale(0.835)">
+    <!-- Simplex Polytope / Linear Region Facet -->
+    <polygon points="120,370 120,230 260,126 392,186 392,370" fill="url(#peachGradMask)" fill-opacity="0.28" stroke="#FF7043" stroke-width="4.5" stroke-linejoin="miter" />
+
+    <!-- Optimal Vector Arrow -->
+    <line x1="120" y1="370" x2="330" y2="154" stroke="#C2410C" stroke-width="4" stroke-dasharray="8,5" />
+    
+    <!-- Optimal Corner Vertex Halo -->
+    <circle cx="260" cy="126" r="24" fill="#FF7043" fill-opacity="0.32" />
+    <circle cx="260" cy="126" r="10" fill="#C2410C" stroke="#FFFFFF" stroke-width="3" />
+
+    <!-- Other vertices -->
+    <circle cx="120" cy="370" r="7" fill="#FF8A65" stroke="#1E293B" stroke-width="2" />
+    <circle cx="120" cy="230" r="7" fill="#FF8A65" stroke="#1E293B" stroke-width="2" />
+    <circle cx="392" cy="186" r="7" fill="#FF8A65" stroke="#1E293B" stroke-width="2" />
+    <circle cx="392" cy="370" r="7" fill="#FF8A65" stroke="#1E293B" stroke-width="2" />
+
+    <!-- Technical Cartesian Axis Markers -->
+    <path d="M 96 370 L 416 370" stroke="#334155" stroke-width="3.5" stroke-linecap="square" />
+    <path d="M 120 394 L 120 86" stroke="#334155" stroke-width="3.5" stroke-linecap="square" />
+
+    <!-- Axis Arrow tips -->
+    <polygon points="426,370 412,363 412,377" fill="#334155" />
+    <polygon points="120,76 113,90 127,90" fill="#334155" />
+
+    <!-- Matrix Accent -->
+    <g fill="#FF7043">
+      <rect x="340" y="74" width="8" height="8" />
+      <rect x="356" y="74" width="8" height="8" />
+      <rect x="372" y="74" width="8" height="8" />
+      <rect x="348" y="82" width="8" height="8" />
+      <rect x="364" y="82" width="8" height="8" />
+      <rect x="380" y="82" width="8" height="8" />
+    </g>
+
+    <!-- Typography -->
+    <text x="256" y="432" font-family="'Space Mono', monospace, system-ui, sans-serif" font-size="30" font-weight="700" fill="#0F172A" text-anchor="middle" letter-spacing="4">LinOpt</text>
+    <text x="256" y="458" font-family="'Space Mono', monospace, sans-serif" font-size="12" font-weight="700" fill="#C2410C" text-anchor="middle" letter-spacing="2">LINEAR PROGRAMMING</text>
+  </g>
+</svg>

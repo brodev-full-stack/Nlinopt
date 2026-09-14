@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinOpt</title>
+    <meta name="description" content="Plataforma didáctica de optimización lineal y entera con Método Simplex, Método Gráfico 2D, modelo Primal/Dual y análisis de sensibilidad." />
+    <meta property="og:title" content="LinOpt" />
+    <meta property="og:description" content="Plataforma didáctica de optimización lineal y entera con Método Simplex, Método Gráfico 2D, modelo Primal/Dual y análisis de sensibilidad." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- PWA and Mobile Meta Tags -->
+    <meta name="theme-color" content="#F2EEE2" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="LinOpt" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Fonts (Instrument Serif + JetBrains Mono) are self-hosted via
+         @fontsource and bundled into the built CSS (see src/index.css) —
+         no external fonts.googleapis.com/fonts.gstatic.com requests, so
+         they're available even when the installed PWA is fully offline. -->
+
+    <!-- Dev/preview-only Service Worker unregister + cache purger. -->
+    <!-- CRITICAL: this must NEVER run on a real deployment, or the app permanently -->
+    <!-- self-destructs its own offline cache on every load, which defeats the whole -->
+    <!-- offline-first PWA requirement. Scoped to the same hosts main.tsx treats as dev/preview. -->
+    <script>
+      (function() {
+        var isDevOrPreview =
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '127.0.0.1' ||
+          window.location.hostname.includes('run.app');
+
+        if (isDevOrPreview && 'serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            if (regs.length > 0) {
+              for (var i = 0; i < regs.length; i++) {
+                regs[i].unregister();
+              }
+              if ('caches' in window) {
+                caches.keys().then(function(keys) {
+                  keys.forEach(function(k) { caches.delete(k); });
+                });
+              }
+              if (navigator.serviceWorker.controller && !sessionStorage.getItem('__sw_cleansed__')) {
+                sessionStorage.setItem('__sw_cleansed__', '1');
+                window.location.reload();
+              }
+            }
+          }).catch(function() {});
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-DpUTvC22.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BQLu4nU1.css">
+  <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+  <body class="antialiased selection:bg-blue-500 selection:text-white">
+    <div id="root">
+      <div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F2EEE2;font-family:sans-serif;color:#10192A;padding:24px;text-align:center;">
+        <div style="font-size:28px;font-weight:900;letter-spacing:-0.03em;margin-bottom:8px;">
+          Lin<span style="color:#B23A2E;">Opt</span>
+        </div>
+        <div style="font-size:13px;color:#5B6472;margin-bottom:16px;">
+          Cargando solucionador de programación lineal...
+        </div>
+      </div>
+    </div>
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('[LinOpt Window Error]', e);
+        var root = document.getElementById('root');
+        if (root && (!root.children || root.children.length <= 1)) {
+          root.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#FAF7F5;font-family:monospace;">' +
+            '<div style="max-width:540px;width:100%;background:#FFF0EB;border:2px solid #C04828;padding:20px;color:#C04828;">' +
+            '<h3 style="margin:0 0 8px 0;font-weight:bold;font-size:16px;">Error de inicialización</h3>' +
+            '<p style="margin:0 0 12px 0;font-size:12px;color:#1F1B19;">' + (e.message || 'Error al ejecutar módulos') + '</p>' +
+            '<button onclick="sessionStorage.clear();if(\'caches\' in window){caches.keys().then(function(k){k.forEach(function(c){caches.delete(c)})})};location.reload();" style="background:#C04828;color:#fff;border:none;padding:8px 14px;font-weight:bold;cursor:pointer;font-family:monospace;font-size:12px;">Limpiar Caché y Recargar</button>' +
+            '</div></div>';
+        }
+      });
+    </script>
+  </body>
+</html>
+
